@@ -47,7 +47,7 @@ void Bird::Gravity()
 		if (jumpHeight > 0)
 		{
 			inJump = false;
-			jumpHeight = -6;
+			jumpHeight = -5;
 		}
 	}
 	else
