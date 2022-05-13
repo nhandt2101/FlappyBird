@@ -7,6 +7,7 @@
 #include "CheckCollision.h"
 #include "TextManager.h"
 #include "GameOver.h"
+
 Bird b;
 Background bg;
 Base base1, base2;
@@ -24,6 +25,7 @@ TextManager buttonReplay;
 TextManager buttonExit;
 TextManager score;
 TextManager highScore;
+TextManager scoreWhenDie;
 
 GameOver gover;
 
@@ -143,6 +145,8 @@ void Game::init()
 				gover.createTexture("Image/gameover.png", renderer);
                 buttonReplay.createFont("TTFfile/04B_19__.TTF", 40);
 				buttonExit.createFont("TTFfile/04B_19__.TTF", 40);
+				highScore.createFont("TTFfile/04B_19__.TTF", 40);
+				scoreWhenDie.createFont("TTFfile/04B_19__.TTF", 50);
 		}
         else
 		{
@@ -271,7 +275,8 @@ void Game::CollisionDetection()
 		CheckCollision::Check_Collision(&b.destRect, &Pipe_Above3.destRect) || CheckCollision::Check_Collision(&b.destRect, &Pipe_Below3.destRect))
 	{
 		birdDie = true;
-		if(playSound){
+		if(playSound)
+		{
 		Mix_PlayChannel(-1, hitSound, 0);
 		SDL_Delay(500);
 		Mix_PlayMusic(dieSound, 0);
@@ -288,7 +293,6 @@ void Game::CollisionDetection()
 		Mix_PlayChannel(-1, hitSound, 0);
 		Mix_PlayMusic(dieSound, 0);
 		}
-		
 	}
 }
 
@@ -311,7 +315,7 @@ void Game::render()
 		ScoreTable.Render(renderer);
 		buttonReplay.Render(renderer, 250, 600);
 		buttonExit.Render(renderer, 250,650);
-		score.Render(renderer, 230, 375);
+		scoreWhenDie.Render(renderer, 230, 375);
 		highScore.Render(renderer, 355, 340);
 	}
 	else
@@ -319,14 +323,12 @@ void Game::render()
 		b.Render(renderer);
 		score.Render(renderer, 0, 0);
 	}
-	
     	SDL_RenderPresent(renderer);
 }
 
 void Game::whenBirdDie()
 {
-		score.createFont("TTFfile/04B_19__.TTF", 50);
-		score.Text(std::to_string(yourScore), BLACKCOLOR, renderer);
+		scoreWhenDie.Text(std::to_string(yourScore), BLACKCOLOR, renderer);
 		std::ifstream inputFile("HighScore.txt");
 		if(inputFile)
 		{
@@ -346,7 +348,6 @@ void Game::whenBirdDie()
 			writeFile << _highScore;
 		}
 		writeFile.close();
-		highScore.createFont("TTFfile/04B_19__.TTF", 40);
 		highScore.Text(std::to_string(_highScore), BLACKCOLOR, renderer);
 }
 
@@ -366,9 +367,9 @@ void Game::Reset()
 	birdDie = false;
 	playSound = true;
 }
-
 void Game::clear()
 {
+	scoreWhenDie.closeFont();
 	buttonExit.closeFont();
 	buttonExit.closeFont();
 	score.closeFont();

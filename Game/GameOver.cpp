@@ -6,8 +6,5 @@ void GameOver::Render(SDL_Renderer*ren)
     setDest(100, 50, 400, 200);
     SDL_RenderCopy(ren, getTexture(), &srcRect, &destRect);
 }
-void GameOver::clear()
-{
 
-}
  

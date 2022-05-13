@@ -37,34 +37,43 @@ void Bird::Gravity()
 	
 	if (JumpState())
 	{
-		angle = 0;
+		
 		accelerator1 = accelerator1 + 0.03;
 		accelerator2 = accelerator2 + 0.03;
 		jumpHeight = jumpHeight + gravity;
-		angle -= 20;
-		
+		angle -= 30;
 		Ypos = Ypos + gravity + accelerator1 + accelerator2 + jumpHeight;
 		setDest(25, Ypos, 35, 30);
 		if (jumpHeight > 0)
 		{
 			inJump = false;
 			jumpHeight = -6;
-		
 		}
 	}
 	else
 	{
-		angle += 1;
-		accelerator1 = accelerator1 + 0.03;
-		accelerator2 = accelerator2 + 0.03;
+		if(angle >= -45 && angle <= -30)
+		{
+			angle += 2;
+		}
+		else if(angle > -30 && angle <= 0)
+		{
+			angle += 1.5;
+		}
+		else
+		{
+			angle += 1;
+		}
+		accelerator1 = accelerator1 + 0.04;
+		accelerator2 = accelerator2 + 0.04;
 		Ypos = Ypos + gravity + accelerator1 + accelerator2;
 		setDest(25, Ypos, 35, 30);
 	}
 		if (angle <= -45){
 		angle = -45;
 		}
-		else if (angle >= 80){
-		angle = 80;
+		else if (angle >= 90){
+		angle = 90;
 	}
 	
 }

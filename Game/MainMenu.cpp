@@ -14,8 +14,6 @@ void MainMenu::Initialize(SDL_Renderer* ren)
 {
 	menuBackground.createTexture("Image/MainMenu.png", ren);
 	start.createTexture("Image/PressStart.PNG",ren);
-	
-	
 }
 bool MainMenu::checkSelected(int x, int y)
 {
@@ -28,8 +26,6 @@ bool MainMenu::checkSelected(int x, int y)
 	}
 	return false;
 }
-
-
 
 void MainMenu::Render(SDL_Renderer* ren, SDL_Event &e)
 {
@@ -94,5 +90,4 @@ MainMenu::~MainMenu()
 {
 	isClicked = false;
 	isSelected = false;
-	
 }
