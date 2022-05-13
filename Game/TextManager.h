@@ -12,9 +12,9 @@ private:
 public:
     SDL_Rect TextRect;
     void createFont(const std::string path, int size);
-    void Text(std::string text, SDL_Color color, SDL_Renderer* ren);
+    void Text(const std::string text, const SDL_Color color, SDL_Renderer* ren);
     void createTexture(SDL_Surface* sur, SDL_Renderer* ren);
-    void Render(SDL_Renderer* renderder, int x, int y);
+    void Render(SDL_Renderer* renderder, const int x, const int y);
     void closeFont();
     
 };
