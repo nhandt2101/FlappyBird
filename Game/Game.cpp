@@ -36,36 +36,36 @@ const SDL_Color REDCOLOR = {255, 0, 0, 255};
 
 Game::Game()
 {
-    window = NULL;
-    renderer = NULL;
-    isRunning = false;
+	window = NULL;
+	renderer = NULL;
+	isRunning = false;
 	birdDie = false;
-    
-    b.setSrc(0, 0, 34, 24);
-    b.setDest(110, 200, 35, 30);
-    bg.setSrc(0, 0, 540, 720);
-    bg.setDest(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    
+
+	b.setSrc(0, 0, 34, 24);
+	b.setDest(110, 200, 35, 30);
+	bg.setSrc(0, 0, 540, 720);
+	bg.setDest(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
 	base1.setSrc(0, 0, 540, 120);
-    base2.setSrc(0, 0, 540, 120);
-    
+	base2.setSrc(0, 0, 540, 120);
+
 	Pipe_Above1.setSrc(0, 0, 25, 100);
-    Pipe_Below1.setSrc(0, 0, 25, 100);
-    Pipe_Above1.setSrc(0, 0, 25, 100);
-    Pipe_Below1.setSrc(0, 0, 25, 100);
-    Pipe_Above2.setSrc(0, 0, 25, 100);
-    Pipe_Below2.setSrc(0, 0, 25, 100);
-    Pipe_Above3.setSrc(0, 0, 25, 100);
-    Pipe_Below3.setSrc(0, 0, 25, 100);
-    Pipe_Above1.setDest(300, -50, 80, 400);
-    Pipe_Below1.setDest(300, 410, 80, 400);
+	Pipe_Below1.setSrc(0, 0, 25, 100);
+	Pipe_Above1.setSrc(0, 0, 25, 100);
+	Pipe_Below1.setSrc(0, 0, 25, 100);
+	Pipe_Above2.setSrc(0, 0, 25, 100);
+	Pipe_Below2.setSrc(0, 0, 25, 100);
+	Pipe_Above3.setSrc(0, 0, 25, 100);
+	Pipe_Below3.setSrc(0, 0, 25, 100);
+	Pipe_Above1.setDest(300, -50, 80, 400);
+	Pipe_Below1.setDest(300, 410, 80, 400);
 	Pipe_Above2.setDest(550, -50, 80, 400);
-    Pipe_Below2.setDest(550, 410, 80, 400);
-    Pipe_Above3.setDest(800, -50, 80, 400);
-    Pipe_Below3.setDest(800, 410, 80, 400);
+	Pipe_Below2.setDest(550, 410, 80, 400);
+	Pipe_Above3.setDest(800, -50, 80, 400);
+	Pipe_Below3.setDest(800, 410, 80, 400);
 
 	ScoreTable.setSrc(0, 0, 444, 282);
-    ScoreTable.setDest(150, 250, 300, 300);
+	ScoreTable.setDest(150, 250, 300, 300);
 }
 
 bool Game::running()
