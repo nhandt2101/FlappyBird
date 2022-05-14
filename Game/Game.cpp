@@ -115,11 +115,11 @@ void Game::init()
 		if(exitSound == NULL) std::cout<<7<<std::endl;
 	}   
 		window = SDL_CreateWindow("Flappy Bird", 
-								  SDL_WINDOWPOS_CENTERED,
-								  SDL_WINDOWPOS_CENTERED,
-								  SCREEN_WIDTH,
-								  SCREEN_HEIGHT,
-								  SDL_WINDOW_SHOWN);
+									SDL_WINDOWPOS_CENTERED,
+									SDL_WINDOWPOS_CENTERED,
+									SCREEN_WIDTH,
+									SCREEN_HEIGHT,
+									SDL_WINDOW_SHOWN);
 	if(window)
 	{
 		std::cout<<"Window has been created !..."<<std::endl;
