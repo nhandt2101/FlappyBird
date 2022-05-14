@@ -38,6 +38,8 @@ class Game
         Mix_Chunk* pointSound;
         Mix_Chunk* wingSound;
         Mix_Chunk* hitSound;
+        Mix_Chunk* replaySound;
+        Mix_Chunk* exitSound;
         
         int variance1 = rand() % 201 - 100;
 	    int variance2 = rand() % 201 - 100;

@@ -108,6 +108,12 @@ void Game::init()
 		
 		wingSound = Mix_LoadWAV("Audio/wing.wav");
 		if(wingSound == NULL) std::cout<<5<<std::endl;
+
+		replaySound = Mix_LoadWAV("Audio/replaySound.wav");
+		if(replaySound == NULL) std::cout<<6<<std::endl;
+
+		exitSound = Mix_LoadWAV("Audio/exitSound.wav");
+		if(exitSound == NULL) std::cout<<7<<std::endl;
 	}   
 	window = SDL_CreateWindow("Flappy Bird", 
                               SDL_WINDOWPOS_CENTERED,
@@ -197,7 +203,7 @@ void Game::handleEvent()
 		   && event.motion.y > 600 
 		   && event.motion.y < 640)
 		{
-			
+			Mix_PlayChannel(-1, replaySound, 0);
 			SDL_Delay(100);
 			Reset();
 		}
@@ -207,7 +213,7 @@ void Game::handleEvent()
 				&& event.motion.y > 650 
 				&& event.motion.y < 690)
 		{
-		
+		Mix_PlayChannel(-1, exitSound, 0);
 		SDL_Delay(100);
 		isRunning = false;
 		clear();
@@ -379,6 +385,8 @@ void Game::clear()
 	Mix_FreeMusic(dieSound);
 	Mix_FreeChunk(hitSound);
 	Mix_FreeChunk(swooshSound);
+	Mix_FreeChunk(replaySound);
+	Mix_FreeChunk(exitSound);
     SDL_DestroyRenderer(renderer);
     renderer = NULL;
     SDL_DestroyWindow(window);
