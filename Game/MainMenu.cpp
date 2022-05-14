@@ -38,10 +38,8 @@ void MainMenu::Render(SDL_Renderer* ren, SDL_Event &e)
     menuBackground.setDest(0, 0, 600, 800);
 	while(true)
 	{
-		
 		menuBackground.Render(ren);
 		start.Render(ren);
-		
 		SDL_RenderPresent(ren);
 		while(SDL_PollEvent(&e))
 		{
@@ -51,33 +49,33 @@ void MainMenu::Render(SDL_Renderer* ren, SDL_Event &e)
 			}
 			if(e.type == SDL_MOUSEMOTION)
 			{
-		if(checkSelected(e.motion.x, e.motion.y))
-			{
-				if(!isSelected)
+				if(checkSelected(e.motion.x, e.motion.y))
 				{
-				isSelected = true;
-				start.setSrc(0,0, 225, 66);
-				start.setDest(215,630,170, 85);
+					if(!isSelected)
+					{
+						isSelected = true;
+						start.setSrc(0,0, 225, 66);
+						start.setDest(215,630,170, 85);
+					}
+				}
+				else
+				{
+					if(isSelected)
+					{
+						isSelected = false;
+						start.setSrc(252,0, 225, 66);
+						start.setDest(215,630,170, 85);
+					}
 				}
 			}
-		else
-			{
-			if(isSelected)
-			{
-			isSelected = false;
-			start.setSrc(252,0, 225, 66);
-			start.setDest(215,630,170, 85);
-			}
-		}
-	}
 			if (e.type == SDL_MOUSEBUTTONDOWN 
 				&& e.motion.x > 215 
 				&& e.motion.x < 380 
 				&& e.motion.y > 640 
 				&& e.motion.y < 700)
 			{
-			Mix_PlayChannel(-1, startSound, 0);
-			isClicked = true;
+				Mix_PlayChannel(-1, startSound, 0);
+				isClicked = true;
 			}
 		}
 		if(isClicked == true)
