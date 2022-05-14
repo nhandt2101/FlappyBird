@@ -152,6 +152,9 @@ void Game::init()
 			buttonExit.createFont("TTFfile/04B_19__.TTF", 40);
 			highScore.createFont("TTFfile/04B_19__.TTF", 40);
 			scoreWhenDie.createFont("TTFfile/04B_19__.TTF", 50);
+
+			buttonReplay.Text(REPLAY, WHITECOLOR, renderer);
+			buttonExit.Text(EXIT, WHITECOLOR, renderer);
 		}
 		else
 		{
@@ -219,11 +222,13 @@ void Game::handleEvent()
 
 void Game::update()
 {
+	if(birdDie)
+	{
+		whenBirdDie();
+	}
 	std::string s;
 	s = "Score: " + std::to_string(yourScore);
 	score.Text(s, WHITECOLOR, renderer);
-	buttonReplay.Text(REPLAY, WHITECOLOR, renderer);
-	buttonExit.Text(EXIT, WHITECOLOR, renderer);
 	base1.baseUpdate1();
 	base2.baseUpdate2();
 	bool flag1 = false, flag2 = false;
@@ -309,7 +314,6 @@ void Game::render()
 	base2.Render(renderer);
 	if(birdDie)
 	{
-		whenBirdDie();
 		gover.Render(renderer);
 		ScoreTable.Render(renderer);
 		buttonReplay.Render(renderer, 250, 600);
@@ -368,6 +372,7 @@ void Game::Reset()
 }
 void Game::clear()
 {
+	std::cout<<"Game Cleaned!..."<<std::endl;
 	scoreWhenDie.closeFont();
 	buttonExit.closeFont();
 	buttonExit.closeFont();
@@ -385,5 +390,4 @@ void Game::clear()
 	window = NULL;
 	IMG_Quit();
 	SDL_Quit();
-	std::cout<<"Game Cleaned!..."<<std::endl;
 }
