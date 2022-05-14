@@ -34,7 +34,6 @@ class Game
         SDL_Texture* texture;
 
         Mix_Music* dieSound;
-        Mix_Chunk* swooshSound;
         Mix_Chunk* pointSound;
         Mix_Chunk* wingSound;
         Mix_Chunk* hitSound;

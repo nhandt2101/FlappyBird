@@ -7,6 +7,7 @@ private:
     
     int Ypos = 256;
     int animationTimer;
+    
     double angle = 0;
     double accelerator1 = 0;
     double accelerator2 = 0;

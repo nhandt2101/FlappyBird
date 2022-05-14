@@ -14,6 +14,11 @@ void MainMenu::Initialize(SDL_Renderer* ren)
 {
 	menuBackground.createTexture("Image/MainMenu.png", ren);
 	start.createTexture("Image/PressStart.PNG",ren);
+	startSound = Mix_LoadWAV("Audio/replaySound.wav");
+	if(startSound == NULL)
+	{
+		std::cout<<"wrong"<<std::endl;
+	}
 }
 bool MainMenu::checkSelected(int x, int y)
 {
@@ -71,6 +76,7 @@ void MainMenu::Render(SDL_Renderer* ren, SDL_Event &e)
 				&& e.motion.y > 640 
 				&& e.motion.y < 700)
 			{
+			Mix_PlayChannel(-1, startSound, 0);
 			isClicked = true;
 			}
 		}
@@ -90,4 +96,7 @@ MainMenu::~MainMenu()
 {
 	isClicked = false;
 	isSelected = false;
+}
+void MainMenu::clear(){
+	Mix_FreeChunk(startSound);
 }

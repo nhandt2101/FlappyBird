@@ -168,9 +168,5 @@ void Background::Reset()
 	incY1 = 0;
 	incY2 = 0;
 	incY3 = 0;
-	
 }
-void Background::whenBirdDie(){
-	setSrc(0,0,0,0);
-	setDest(0,0,0,0);
-}
+

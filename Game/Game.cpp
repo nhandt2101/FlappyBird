@@ -81,6 +81,8 @@ void Game::MainMenu()
 		SDL_RenderClear(renderer);
 		menu.Render(renderer, event);
 	}
+	SDL_Delay(100);
+	menu.clear();
 }
 
 void Game::init()
@@ -102,9 +104,6 @@ void Game::init()
 		
 		pointSound = Mix_LoadWAV("Audio/point.wav");
 		if(pointSound == NULL) std::cout<<3<<std::endl;
-		
-		swooshSound = Mix_LoadWAV("Audio/swoosh.wav");
-		if(swooshSound == NULL) std::cout<<4<<std::endl;
 		
 		wingSound = Mix_LoadWAV("Audio/wing.wav");
 		if(wingSound == NULL) std::cout<<5<<std::endl;
@@ -130,29 +129,29 @@ void Game::init()
             std::cout<<"Renderer has been created !..."<<std::endl;
             isRunning = true;
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-                b.createTexture("Image/redbird-midflap.png", renderer);
-				b.CreateTexture1("Image/redbird-downflap.png", renderer);
-				b.CreateTexture2("Image/redbird-upflap.png", renderer);
+            b.createTexture("Image/redbird-midflap.png", renderer);
+			b.CreateTexture1("Image/redbird-downflap.png", renderer);
+			b.CreateTexture2("Image/redbird-upflap.png", renderer);
                 
-                bg.createTexture("Image/bgDay.png", renderer);
-				ScoreTable.createTexture("Image/Score.png",renderer);
+            bg.createTexture("Image/bgDay.png", renderer);
+			ScoreTable.createTexture("Image/Score.png",renderer);
             
-                base1.createTexture("Image/baseLong.png",renderer);
-                base2.createTexture("Image/baseLong.png",renderer);
+            base1.createTexture("Image/baseLong.png",renderer);
+            base2.createTexture("Image/baseLong.png",renderer);
                 
-                Pipe_Below1.createTexture("Image/pipeBottom.png",renderer);
-                Pipe_Above1.createTexture("Image/pipeTop.png",renderer);
-                Pipe_Below2.createTexture("Image/pipeBottom.png",renderer);
-                Pipe_Above2.createTexture("Image/pipeTop.png",renderer);
-                Pipe_Below3.createTexture("Image/pipeBottom.png",renderer);
-                Pipe_Above3.createTexture("Image/pipeTop.png",renderer);
+            Pipe_Below1.createTexture("Image/pipeBottom.png",renderer);
+            Pipe_Above1.createTexture("Image/pipeTop.png",renderer);
+			Pipe_Below2.createTexture("Image/pipeBottom.png",renderer);
+			Pipe_Above2.createTexture("Image/pipeTop.png",renderer);
+			Pipe_Below3.createTexture("Image/pipeBottom.png",renderer);
+			Pipe_Above3.createTexture("Image/pipeTop.png",renderer);
 
-				score.createFont("TTFfile/04B_19__.TTF", 38);
-				gover.createTexture("Image/gameover.png", renderer);
-                buttonReplay.createFont("TTFfile/04B_19__.TTF", 40);
-				buttonExit.createFont("TTFfile/04B_19__.TTF", 40);
-				highScore.createFont("TTFfile/04B_19__.TTF", 40);
-				scoreWhenDie.createFont("TTFfile/04B_19__.TTF", 50);
+			score.createFont("TTFfile/04B_19__.TTF", 38);
+			gover.createTexture("Image/gameover.png", renderer);
+			buttonReplay.createFont("TTFfile/04B_19__.TTF", 40);
+			buttonExit.createFont("TTFfile/04B_19__.TTF", 40);
+			highScore.createFont("TTFfile/04B_19__.TTF", 40);
+			scoreWhenDie.createFont("TTFfile/04B_19__.TTF", 50);
 		}
         else
 		{
@@ -185,23 +184,20 @@ void Game::handleEvent()
 			else
 			{
 				b.Gravity();
-				
 			}
 		}
 	}
 	else
 	{
 		b.Gravity();
-		
 	}
 	if(birdDie)
 	{
-
     	if(event.type == SDL_MOUSEBUTTONDOWN
-		   && event.motion.x > 250 
-		   && event.motion.x < 380 
-		   && event.motion.y > 600 
-		   && event.motion.y < 640)
+			&& event.motion.x > 250 
+			&& event.motion.x < 380 
+			&& event.motion.y > 600 
+			&& event.motion.y < 640)
 		{
 			Mix_PlayChannel(-1, replaySound, 0);
 			SDL_Delay(100);
@@ -213,10 +209,10 @@ void Game::handleEvent()
 				&& event.motion.y > 650 
 				&& event.motion.y < 690)
 		{
-		Mix_PlayChannel(-1, exitSound, 0);
-		SDL_Delay(100);
-		isRunning = false;
-		clear();
+			Mix_PlayChannel(-1, exitSound, 0);
+			SDL_Delay(100);
+			isRunning = false;
+			clear();
 		}
 	}
 }
@@ -265,10 +261,9 @@ void Game::update()
 		variance3 = rand() % 201 - 100;
 		Pipe_Above3.Pipe_Above3Update(variance3, yourScore, birdDie);
 		Pipe_Below3.Pipe_Below3Update(variance3);
-		
 		if(!birdDie)
 		{
-		Mix_PlayChannel(-1, pointSound, 0);
+			Mix_PlayChannel(-1, pointSound, 0);
 		}
 	}
 	CollisionDetection();	
@@ -384,7 +379,6 @@ void Game::clear()
 	Mix_FreeChunk(wingSound);
 	Mix_FreeMusic(dieSound);
 	Mix_FreeChunk(hitSound);
-	Mix_FreeChunk(swooshSound);
 	Mix_FreeChunk(replaySound);
 	Mix_FreeChunk(exitSound);
     SDL_DestroyRenderer(renderer);

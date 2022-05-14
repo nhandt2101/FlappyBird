@@ -37,7 +37,6 @@ void Bird::Gravity()
 	
 	if (JumpState())
 	{
-		
 		accelerator1 = accelerator1 + 0.03;
 		accelerator2 = accelerator2 + 0.03;
 		jumpHeight = jumpHeight + gravity;
@@ -69,14 +68,15 @@ void Bird::Gravity()
 		Ypos = Ypos + gravity + accelerator1 + accelerator2;
 		setDest(25, Ypos, 35, 30);
 	}
-		if (angle <= -45){
-		angle = -45;
+		if (angle >= 90)
+		{
+			angle = 90;
 		}
-		else if (angle >= 90){
-		angle = 90;
+		else if(angle <= -45)
+		{
+			angle = -45;
+		}
 	}
-	
-}
 
 void Bird::Jump()
 {

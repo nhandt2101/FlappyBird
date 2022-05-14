@@ -35,5 +35,4 @@ public:
 	void GroundRender(SDL_Renderer* ren);
 	void PipeRender(SDL_Renderer* ren);
 	void Reset();
-	void whenBirdDie();
 };
