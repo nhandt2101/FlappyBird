@@ -22,8 +22,9 @@ bool Background::Pipe_Above1Update(int incY, int& score,bool birdDie)
 	if (pipeDistance1 <= -50)
 	{
 		pipeDistance1 += 700;
-		if(!birdDie){
-		score++;
+		if(!birdDie)
+		{
+			score++;
 		}
 		return true;
 	}
@@ -59,8 +60,9 @@ bool Background::Pipe_Above2Update(int incY, int& score, bool birdDie)
 	if (pipeDistance2 <= -50)
 	{
 		pipeDistance2 += 700;
-		if(!birdDie){
-		score++;
+		if(!birdDie)
+		{
+			score++;
 		}
 		return true;
 	}
@@ -99,7 +101,7 @@ bool Background::Pipe_Above3Update(int incY, int& score, bool birdDie)
 		pipeDistance3 -= 3;
 		if(!birdDie)
 		{
-		score++;
+			score++;
 		}
 		return true;
 	}
