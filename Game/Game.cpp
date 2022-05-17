@@ -95,23 +95,18 @@ void Game::init()
 	else
 	{
 		std::cout<<"Sound has been created!..."<<std::endl;
+		
 		dieSound = Mix_LoadMUS("Audio/die.wav");
-		if(dieSound == NULL) std::cout<<1<<std::endl;
 
 		hitSound = Mix_LoadWAV("Audio/hit.wav");
-		if(hitSound == NULL) std::cout<<2<<std::endl;
 	
 		pointSound = Mix_LoadWAV("Audio/point.wav");
-		if(pointSound == NULL) std::cout<<3<<std::endl;
 		
 		wingSound = Mix_LoadWAV("Audio/wing.wav");
-		if(wingSound == NULL) std::cout<<5<<std::endl;
 
 		replaySound = Mix_LoadWAV("Audio/replaySound.wav");
-		if(replaySound == NULL) std::cout<<6<<std::endl;
 
 		exitSound = Mix_LoadWAV("Audio/exitSound.wav");
-		if(exitSound == NULL) std::cout<<7<<std::endl;
 	}   
 		window = SDL_CreateWindow("Flappy Bird", 
 					SDL_WINDOWPOS_CENTERED,
