@@ -8,7 +8,7 @@
 #include "TextManager.h"
 #include "GameOver.h"
 
-Bird b;
+Bird myBird;
 Background bg;
 Base base1, base2;
 MainMenu menu;
@@ -33,7 +33,6 @@ const SDL_Color WHITECOLOR = {255, 255, 255, 255};
 const SDL_Color BLACKCOLOR = {0, 0 ,0 , 0};
 const SDL_Color REDCOLOR = {255, 0, 0, 255};
 
-
 Game::Game()
 {
 	window = NULL;
@@ -41,8 +40,8 @@ Game::Game()
 	isRunning = false;
 	birdDie = false;
 
-	b.setSrc(0, 0, 34, 24);
-	b.setDest(110, 200, 35, 30);
+	myBird.setSrc(0, 0, 34, 24);
+	myBird.setDest(110, 200, 35, 30);
 	bg.setSrc(0, 0, 540, 720);
 	bg.setDest(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -129,9 +128,10 @@ void Game::init()
 			std::cout<<"Renderer has been created !..."<<std::endl;
 			isRunning = true;
 			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-			b.createTexture("Image/redbird-midflap.png", renderer);
-			b.CreateTexture1("Image/redbird-downflap.png", renderer);
-			b.CreateTexture2("Image/redbird-upflap.png", renderer);
+			
+			myBird.createTexture("Image/redbird-midflap.png", renderer);
+			myBird.CreateTexture1("Image/redbird-downflap.png", renderer);
+			myBird.CreateTexture2("Image/redbird-upflap.png", renderer);
 				
 			bg.createTexture("Image/bgDay.png", renderer);
 			ScoreTable.createTexture("Image/Score.png",renderer);
@@ -169,7 +169,7 @@ void Game::init()
 
 void Game::handleEvent()
 {
-	b.GetJumpTime();
+	myBird.GetJumpTime();
 	SDL_PollEvent(&event);
 	if (event.type == SDL_QUIT)
 	{
@@ -179,20 +179,20 @@ void Game::handleEvent()
 	{
 		if (event.key.keysym.sym == SDLK_SPACE)
 		{
-			if(!b.JumpState())
+			if(!myBird.JumpState())
 			{
-			b.Jump();
+			myBird.Jump();
 			Mix_PlayChannel(-1, wingSound, 0);
 			}
 		else
 		{
-			b.Gravity();
+			myBird.Gravity();
 		}
 	}
 	}
 	else
 	{
-		b.Gravity();
+		myBird.Gravity();
 	}
 	if (birdDie)
 	{
@@ -276,9 +276,9 @@ void Game::update()
 
 void Game::CollisionDetection()
 {
-	if (CheckCollision::Check_Collision(&b.destRect, &Pipe_Above1.destRect) || CheckCollision::Check_Collision(&b.destRect, &Pipe_Below1.destRect) || 
-		CheckCollision::Check_Collision(&b.destRect, &Pipe_Above2.destRect) || CheckCollision::Check_Collision(&b.destRect, &Pipe_Below2.destRect) || 
-		CheckCollision::Check_Collision(&b.destRect, &Pipe_Above3.destRect) || CheckCollision::Check_Collision(&b.destRect, &Pipe_Below3.destRect))
+	if (CheckCollision::Check_Collision(&myBird.destRect, &Pipe_Above1.destRect) || CheckCollision::Check_Collision(&myBird.destRect, &Pipe_Below1.destRect) || 
+		CheckCollision::Check_Collision(&myBird.destRect, &Pipe_Above2.destRect) || CheckCollision::Check_Collision(&myBird.destRect, &Pipe_Below2.destRect) || 
+		CheckCollision::Check_Collision(&myBird.destRect, &Pipe_Above3.destRect) || CheckCollision::Check_Collision(&myBird.destRect, &Pipe_Below3.destRect))
 	{
 		birdDie = true;
 		if(playSound)
@@ -289,7 +289,7 @@ void Game::CollisionDetection()
 		}
 	playSound = false;
 	}
-	else if (CheckCollision::Check_Collision(&b.destRect, &base1.destRect) || CheckCollision::Check_Collision(&b.destRect, &base2.destRect) || b.getYpos() < 0)
+	else if (CheckCollision::Check_Collision(&myBird.destRect, &base1.destRect) || CheckCollision::Check_Collision(&myBird.destRect, &base2.destRect) || myBird.getYpos() < 0)
 	{
 	birdDie = true;
 	if(playSound)
@@ -323,7 +323,7 @@ void Game::render()
 	}
 	else
 	{
-		b.Render(renderer);
+		myBird.Render(renderer);
 		score.Render(renderer, 0, 0);
 	}
 		SDL_RenderPresent(renderer);
@@ -359,7 +359,7 @@ void Game::Reset()
 	variance1 = rand() % 201 - 100;
 	variance2 = rand() % 201 - 100;
 	variance3 = rand() % 201 - 100;
-	b.Reset();
+	myBird.Reset();
 	yourScore = 0;
 	Pipe_Above1.Reset();
 	Pipe_Above2.Reset();
