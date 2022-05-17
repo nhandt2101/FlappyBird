@@ -12,7 +12,7 @@ private:
     double accelerator1 = 0;
     double accelerator2 = 0;
     double gravity = 0.2;
-    double jumpHeight = -6;
+    double jumpHeight = -5;
     double jumpTimer;
     double lastJump = 0;
 
