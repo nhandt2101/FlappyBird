@@ -1,0 +1,5 @@
+make.exe --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/c/Flappy Bird/FlappyBird/Game'
+g++ -ISDL2/Include -LSDL2/lib -o main *.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer && start main
+make: Leaving directory '/c/Flappy Bird/FlappyBird/Game'
+ 

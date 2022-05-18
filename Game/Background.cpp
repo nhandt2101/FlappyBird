@@ -5,10 +5,6 @@ void Background::Render(SDL_Renderer* ren)
 {
 	SDL_RenderCopy(ren, getTexture(), &this->srcRect, &this->destRect);
 }
-void Background::GroundRender(SDL_Renderer* ren)
-{
-	SDL_RenderCopy(ren, getTexture(), &this->srcRect, &this->destRect);
-}
 
 void Background::PipeRender(SDL_Renderer* ren)
 {

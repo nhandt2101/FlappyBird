@@ -21,18 +21,13 @@ public:
 	bool Pipe_Below2Update(int incY);
 	bool Pipe_Above3Update(int incY, int& score, bool birdDie);
 	bool Pipe_Below3Update(int incY);
-	
 	//int getPipe1X();
 	//int getPipe1Y();
 	//int getPipe2X();
 	//int getPipe2Y();
 	//int getPipe3X();
 	//int getPipe3Y();
-	
-	void GroundUpdate1();
-	void GroundUpdate2();
 	void Render(SDL_Renderer* ren);
-	void GroundRender(SDL_Renderer* ren);
 	void PipeRender(SDL_Renderer* ren);
 	void Reset();
 };
