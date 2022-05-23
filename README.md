@@ -21,7 +21,7 @@ UET - Assignment - Project
 - Sử dụng terminal dowload soure code: git clone https://github.com/nhandt2101/FlappyBird.git
 - Tại terminal: sử dụng câu lệnh sau để makefile: make
 - Sau đó trò chơi sẽ được bắt đầu.
-
+- Mọi khó khăn trong phần cài đặt, trong quá trình chơi, hãy email qua 21020371@vnu.edu.vn
 # Các kỹ thuật được sử dụng:
 - Thư viện SDL2(hình ảnh, âm thanh, font chữ).
 - Tạo ra nhiều các đối tượng như: con chim, background, menu,...
