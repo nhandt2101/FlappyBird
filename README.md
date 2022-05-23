@@ -7,9 +7,9 @@ UET - Assignment - Project
 # Mô tả:
 - Đây là bản làm lại của trò chơi Flappy Bird của anh Đông Nguyễn.
 - Phiên bản dành cho PC.
-- Có âm thanh mô phỏng các hành động của con chim trong game.
+- Có âm thanh mô phỏng các hành động của chú chim trong game.
 - Game có các chức năng như: chơi lại, thoát game, lưu lại điểm cao,...
-- Video demo: 
+- Video demo: https://www.youtube.com/watch?v=JBmRQcaXnfE
 # Hướng dẫn chơi
 - Sử dụng phím Space để điều khiển con chim vượt qua các chướng ngại vật.
 # Priview:
@@ -44,6 +44,9 @@ UET - Assignment - Project
 - Kĩ thuật lập trình được nâng cao hơn.
 - Học được cách setup môi trường thư viện ngoài.
 - Chương trình có thể dễ dành refactor và cập nhật.
+
+*Điểm chưa được:
+- Chưa có hệ thống chọn nhân vật.
 
 *Hướng phát triển thêm:
 - Multiplayer.
